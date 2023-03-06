@@ -55,3 +55,25 @@ li{
     text-transform: uppercase;
     font-weight: bold;
 }
+
+footer{
+    background-color: white;
+    position:fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
+.foot p{
+    margin: 5px 8px 0px 8px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p{
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
