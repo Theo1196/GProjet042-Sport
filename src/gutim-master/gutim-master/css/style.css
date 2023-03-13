@@ -771,7 +771,7 @@ ul, ol {
 -----------------------*/
 
 .register-section {
-	background: #f5f4f4;
+	background: white;
 	padding-top: 235px;
 	margin-top: -135px;
 }
@@ -793,7 +793,7 @@ ul, ol {
 }
 .register-text {
 	padding: 50px 70px 60px 70px;
-	background: #ffffff;
+	background: #f5f5f5;
 	margin-right: -15px;
 }
 .register-text .register-form label {
