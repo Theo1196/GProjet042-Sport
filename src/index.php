@@ -3,7 +3,7 @@
 <head>
     <title>Sport</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="css/header.css"/>
 </head>
 <?php include("includes/header.html");?> 
 
