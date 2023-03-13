@@ -1,0 +1,14 @@
+.register-section {
+    background: #f5f4f4;
+    padding-top: 235px;
+    margin-top: -135px;
+}
+form{
+    display: flex;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+section {
+    display: block;
+    padding: 50px 70px 60px 70px;
+}
