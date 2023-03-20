@@ -63,6 +63,15 @@
 
     }
 
+    //Fonction pour avoir le nb de coach dans la DB
+    public function countCoach()
+    {
+        $query = "SELECT COUNT(*) FROM t_coach";
+        $req = $this->querySimpleExecute($query);
+        $idCoach = $this->formatData($req);
+        return $idCoach;
+    }
+
     //
     public function deleteOneRecette($idRecette){
 
