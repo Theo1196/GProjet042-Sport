@@ -41,8 +41,8 @@
     }
 
     //
-    public function getAllRecettes(){
-        $query = "SELECT * FROM t_recette";
+    public function getAllCoach(){
+        $query = "SELECT * FROM t_coach";
         $req = $this->querySimpleExecute($query);
         $recette = $this->formatData($req);
         return $recette;
@@ -92,3 +92,4 @@
     }
 
  }
+ ?>
