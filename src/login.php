@@ -41,6 +41,12 @@
                             <label for="mobile">Numéro de téléphone</label>
                             <input type="text" id="mobile">
                         </div>
+                        <div class="col-lg-6">
+                            <label for="sportif">Sportif :</label>
+                            <input type="radio" id="sportif" name="ins_type" value="sportif" style="width:10px; height:10px;">
+                            <label for="coach" style="padding-left:35px">Coach :</label>
+                            <input type="radio" id="coach" name="ins_type" value="sportif" style="width:10px; height:10px;">
+                        </div>
                     </div>
                     <button type="submit" class="register-btn">s'inscrire</button>
                 </form>
