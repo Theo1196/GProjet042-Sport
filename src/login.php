@@ -17,7 +17,7 @@
 
 <section class="register-section spad">
 <div class="container">
-    <div class="row">
+    <div class="row" style="margin-top: -50px;">
         <div class="col-lg-8">
             <div class="register-text">
                 <div class="section-title">
@@ -41,11 +41,15 @@
                             <label for="mobile">Numéro de téléphone</label>
                             <input type="text" id="mobile">
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6" style="margin-top: 36px;">
                             <label for="sportif">Sportif :</label>
                             <input type="radio" id="sportif" name="ins_type" value="sportif" style="width:10px; height:10px;">
                             <label for="coach" style="padding-left:35px">Coach :</label>
                             <input type="radio" id="coach" name="ins_type" value="sportif" style="width:10px; height:10px;">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="sport">sport a faire/coacher</label>
+                            <input type="text" id="sport" placeholder="vélo, fitness, yoga...">
                         </div>
                     </div>
                     <button type="submit" class="register-btn">s'inscrire</button>
@@ -53,9 +57,9 @@
             </div>
         </div>
         <div class="col-lg-4">
-                    <div class="register-pic">
-                        <img src="img/register-pic.jpg" alt="">
-                    </div>
+            <div class="register-pic">
+                <img src="img/register-pic.jpg" alt="">
+            </div>
         </div>
     </div>
 </div>
