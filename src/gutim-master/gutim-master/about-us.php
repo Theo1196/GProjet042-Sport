@@ -45,7 +45,7 @@
                 <nav class="mainmenu mobile-menu">
                     <ul>
                         <li><a href="./index.html">Accueil</a></li>
-                        <li class="active"><a href="./about-us.html">A propos</a></li>
+                        <li class="active"><a href="./about-us.php">A propos</a></li>
                         <li><a href="./classes.html">Classes</a></li>
                         <li><a href="./blog.html">Blog</a></li>
                         <li><a href="./gallery.html">Gallerie</a></li>
