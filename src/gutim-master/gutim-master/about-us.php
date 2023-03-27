@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="zxx">
-
+<?php
+        session_start();
+        include("../../database.php");
+        $db = new Database();
+        $idCoach = $db->countCoach();
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Gutim Template">
@@ -39,12 +44,12 @@
             <div class="nav-menu">
                 <nav class="mainmenu mobile-menu">
                     <ul>
-                        <li><a href="./index.html">Home</a></li>
-                        <li class="active"><a href="./about-us.html">About</a></li>
+                        <li><a href="./index.html">Accueil</a></li>
+                        <li class="active"><a href="./about-us.php">A propos</a></li>
                         <li><a href="./classes.html">Classes</a></li>
                         <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./gallery.html">Gallery</a></li>
-                        <li><a href="./contact.html">Contacts</a></li>
+                        <li><a href="./gallery.html">Gallerie</a></li>
+                        <li><a href="./contact.html">Contactez-nous</a></li>
                     </ul>
                 </nav>
                 <a href="#" class="primary-btn signup-btn">Sign Up Today</a>
@@ -60,10 +65,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <h2>About</h2>
+                        <h2>A propos</h2>
                         <div class="breadcrumb-option">
-                            <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                            <span>About</span>
+                            <a href="./index.html"><i class="fa fa-home"></i> Accueil</a>
+                            <span>A propos</span>
                         </div>
                     </div>
                 </div>
@@ -86,16 +91,15 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="about-text">
-                        <h2>Story About Us</h2>
-                        <p class="first-para">Lorem ipsum proin gravida nibh vel velit auctor aliquet. Aenean pretium
-                            sollicitudin, nascetur auci elit consequat ipsutissem niuis sed odio sit amet nibh vulputate
-                            cursus a amet.</p>
-                        <p class="second-para">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, gravida
-                            quam semper libero sit amet.</p>
+                        <h2>A propos de nous</h2>
+                        <p class="first-para">Bonjour, nous somme une entreprise à but non lucratif qui met à disposition des coachs pour vous entrainer.
+                            Notre siège est à Lausanne depuis janvier 2020.
+                        </p>
+                        <p class="second-para">Nous comptons 155 employés à l'heure d'aujourd'hui et nous sommes aussi indépendant.</p>
                         <img src="img/about-signature.png" alt="">
                         <div class="at-author">
-                            <h4>Lettie Chavez</h4>
-                            <span>CEO - Founder</span>
+                            <h4>Luca Paul</h4>
+                            <span>CEO - Fondateur</span>
                         </div>
                     </div>
                 </div>
@@ -124,7 +128,9 @@
                             <p>Members</p>
                         </div>
                         <div class="single-counter">
-                            <h1 class="counter-num count">34</h1>
+                            <?php
+                                echo "<h1 class= counter-num count>". $idCoach[0]['COUNT(*)'] ."</h1>";
+                            ?>
                             <p>Coaches</p>
                         </div>
                     </div>
@@ -140,13 +146,11 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="award-text">
-                        <h2>Best gym award</h2>
-                        <p>Lorem ipsum proin gravida nibh vel velit auctor aliquet. Aenean pretium sollicitudin,
-                            nascetur auci elit consequat ipsutissem niuis sed odio sit amet nibh vulputate cursus a
-                            amet.</p>
-                        <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, gravida quam semper libero
-                            sit amet. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, gravida quam
-                            semper libero sit amet.</p>
+                        <h2>Certificat de CrossFit</h2>
+                        <p>Bien sur nous avons le certificat de CrossFit qui vous assure d'avoir des coach professionels et compétant.</p>
+                        <p>Ce certificat prouve aussi que notre matériels est en bonne état et comforme au loi, bref avec cela vous pouvez
+                            vous assurer que votre sécurité sera bien présente.
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-4">

@@ -352,6 +352,7 @@ ul, ol {
 }
 .about-text img {
 	margin-bottom: 25px;
+	width: 280px;
 }
 .about-text .at-author h4 {
 	font-size: 22px;
