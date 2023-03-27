@@ -73,7 +73,7 @@
 
     }
     //
-    public function addOneRecette($recTitre, $recCategorie, $recPreparation, $recImage){
+    public function insertUser($name, $email, $occupation, $sport){
         $sql = "INSERT INTO t_recette (`recTitre`, `recCategorie`, `recPreparation`, `recImage`) VALUES (:recTitre, :recCategorie, :recPreparation, :recImage)";
         $binds = [];
         $binds["recTitre"] = ["value" => $recTitre , "type" => PDO::PARAM_STR];
