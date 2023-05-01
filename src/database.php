@@ -72,6 +72,15 @@
         return $idCoach;
     }
 
+    public function getAllSport()
+    {
+        $query = "SELECT * FROM t_sport"; 
+        $req = $this->querySimpleExecute($query);
+        $sport = $this->formatData($req);
+
+        return $sport;
+    }
+
     //
     public function deleteOneRecette($idRecette){
 
