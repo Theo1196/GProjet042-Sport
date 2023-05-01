@@ -32,7 +32,7 @@
                 <div class="section-title">
                     <h2>S'inscrire maintenant</h2>
                 </div>
-                <form action="#" class="register-form">
+                <form action="getlogin.php" class="register-form">
                     <div class="row">
                         <div class="col-lg-6">
                             <label for="name">Prenom</label>
