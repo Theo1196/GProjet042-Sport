@@ -72,6 +72,25 @@
         return $idCoach;
     }
 
+    //Fonction pour avoir le nb de sport dans la DB
+    public function countSport()
+    {
+        $query = "SELECT COUNT(*) FROM t_sport";
+        $req = $this->querySimpleExecute($query);
+        $idSport = $this->formatData($req);
+        return $idSport;
+    }
+
+    //Fonction pour avoir le nb de sport dans la DB
+    public function CountPlace()
+    {
+        $query = "SELECT COUNT(*) FROM t_réservation";
+        $req = $this->querySimpleExecute($query);
+        $idPlace = $this->formatData($req);
+        return $idPlace;
+    }
+
+
     public function getAllSport()
     {
         $query = "SELECT * FROM t_sport"; 
