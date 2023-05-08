@@ -18,7 +18,7 @@
 	if(isset($_POST["user-type"]))
 	{
 		$count++;
-		var_dump($count);
+		//var_dump($count);
 	}
 
 	if($count === 4 && $_POST["user-type"] == 'sportif')
@@ -69,28 +69,35 @@
         <div class="col-lg-8">
             <div class="register-text">
                 <div class="section-title">
-                    <h2>S'inscrire maintenant</h2>
+                    <h2>S'inscrire maintenant en tant que coach</h2>
                 </div>
-                <form action="getlogin.php" class="register-form" method="post">
+                <form action="getlogincoach.php" class="register-form" method="post">
                     <div class="row">
                         <div class="col-lg-6">
                             <label for="name">Prenom</label>
                             <input type="text" id="name" name="name">
                         </div>
+						<div class="col-lg-6">
+							<label for="rank">Rank</label>
+                            <input type="text" id="rank" name="rank">
+                        </div>
+						<div class="col-lg-6">
+							<label for="description">Description</label>
+                            <input type="text" id="description" name="description">
+                        </div>
                         <div class="col-lg-6">
                             <label for="email">Adresse mail</label>
                             <input type="text" id="email" name="email">
+                        </div>
+						<div class="col-lg-6">
+                            <label for="image">Chemin de l'image</label>
+                            <input type="text" id="image" name="image">
                         </div>
                         <div class="col-lg-6">
                             <label for="sport">sport</label>
                             <input type="text" id="sport" name="sport">
                         </div>
-                        <div >
-                            <label for="sportif">sportif</label>
-                            <input type="radio" id="sportif" name="user-type" value="sportif" style="margin-left: 50px;">
-                            <label for="coach">coach</label>
-                            <input type="radio" id="coach" name="user-type" value="coach" style="margin-left: 50px">
-                        </div>
+
                     </div>
                     <button type="submit" class="register-btn">s'inscrire</button>
                 </form>

@@ -73,15 +73,15 @@
 
     }
     //
-    public function addOneCoach($coaName, $coaMail, $coaRank, $coaDescription, $coaImage, $fkSport){
-        $sql = "INSERT INTO t_coach (DEFAULT, `coaName`, `coaMail`, `coaRank`, `coaDescription`, `coaImage`, `fkSport`) VALUES (:coaName, :coaMail, :coaRank, :coaDescription, :coaImage, :fkSport)";
+    public function addOneCoach($data){
+        $sql = "INSERT INTO t_coach (`coaName`, `coaMail`, `coaRank`, `coaDescription`, `coaImage`, `fkSport`) VALUES (:coaName, :coaMail, :coaRank, :coaDescription, :coaImage, :fkSport)";
         $binds = [];
-        $binds["coaName"]        = ["value" => $coaName , "type" => PDO::PARAM_STR];
-        $binds["coaMail"]        = ["value" => $coaMail , "type" => PDO::PARAM_STR];
-        $binds["coaRank"]        = ["value" => $coaRank , "type" => PDO::PARAM_STR];
-        $binds["coaDescription"] = ["value" => $coaDescription , "type" => PDO::PARAM_STR];
-        $binds["coaImage"]       = ["value" => $coaImage , "type" => PDO::PARAM_STR];
-        $binds["fkSport"]        = ["value" => $fkSport , "type" => PDO::PARAM_STR];
+        $binds["coaName"]        = ["value" => $data["coaName"] , "type" => PDO::PARAM_STR];
+        $binds["coaMail"]        = ["value" => $data["coaMail"] , "type" => PDO::PARAM_STR];
+        $binds["coaRank"]        = ["value" => $data["coaRank"] , "type" => PDO::PARAM_STR];
+        $binds["coaDescription"] = ["value" => $data["coaDescription"] , "type" => PDO::PARAM_STR];
+        $binds["coaImage"]       = ["value" => $data["coaImage"] , "type" => PDO::PARAM_STR];
+        $binds["fkSport"]        = ["value" => $data["fkSport"] , "type" => PDO::PARAM_INT];
         $this->queryPrepareExecute($sql, $binds);
     }
     //
