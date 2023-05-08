@@ -32,23 +32,25 @@
                 <div class="section-title">
                     <h2>S'inscrire maintenant</h2>
                 </div>
-                <form action="getlogin.php" class="register-form">
+                <form action="getlogin.php" class="register-form" method="post">
                     <div class="row">
                         <div class="col-lg-6">
                             <label for="name">Prenom</label>
-                            <input type="text" id="name">
+                            <input type="text" id="name" name="name">
                         </div>
                         <div class="col-lg-6">
                             <label for="email">Adresse mail</label>
-                            <input type="text" id="email">
+                            <input type="text" id="email" name="email">
                         </div>
                         <div class="col-lg-6">
-                            <label for="last-name">Nom de famille</label>
-                            <input type="text" id="last-name">
+                            <label for="sport">sport</label>
+                            <input type="text" id="sport" name="sport">
                         </div>
-                        <div class="col-lg-6">
-                            <label for="mobile">Numéro de téléphone</label>
-                            <input type="text" id="mobile">
+                        <div >
+                            <label for="sportif">sportif</label>
+                            <input type="radio" id="sportif" name="user-type" value="sportif" style="margin-left: 50px;">
+                            <label for="coach">coach</label>
+                            <input type="radio" id="coach" name="user-type" value="coach" style="margin-left: 50px">
                         </div>
                     </div>
                     <button type="submit" class="register-btn">s'inscrire</button>
