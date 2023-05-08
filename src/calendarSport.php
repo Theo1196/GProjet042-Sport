@@ -72,88 +72,57 @@
     </section>
     <!-- Breadcrumb Section End -->
 
-    <!-- Classes Timetable Section Begin -->
-    <?php
+
+<?php
 include("Database.php");
 $db = new Database();
 $calendars = $db->getCalendar();
-$lastWeek = $db->getLastWeek();
-?>
+$idReservation = $_GET['idreservation'];
+$coachs = $db->getAllCoach();
 
-<section class='classes-timetable spad'>
+echo "
+<section class='trainer-section about-trainer spad'>
     <div class='container'>
         <div class='row'>
             <div class='col-lg-12'>
                 <div class='section-title'>
-                    <h2>Emploie du temps</h2>
-                </div>
-                <div class='nav-controls'>
-                    <ul>
-                        <li class='active' data-tsfilter='all'>Toutes les classes</li>
-                        <li data-tsfilter='gym'>Gym</li>
-                        <li data-tsfilter='crossfit'>Crossfit</li>
-                        <li data-tsfilter='Cardio'>Cardio</li>
-                        <li data-tsfilter='body'>Body</li>
-                        <li data-tsfilter='yoga'>Yoga</li>
-                    </ul>
+                    <h2>EXPERT TRAINERS</h2>
                 </div>
             </div>
         </div>
         <div class='row'>
-            <div class='col-lg-12'>
-                <div class='schedule-table'>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Lundi</th>
-                                <th>Mardi</th>
-                                <th>Mercredi</th>
-                                <th>Jeudi</th>
-                                <th>Vendredi</th>
-                                <th>Samedi</th>
-                                <th>Dimanche</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php for ($e = 0; $e < 7; $e++) { 
-                                echo "
-                                <tr>
-                                    <td class='workout-time'> " . 10 + ($e * 2) . " :00h</td>
-                                ";
-                                    for ($i = 0; $i < 7; $i++) {
-                                        $foundCalendar = false;
-                                    
-                                        foreach ($calendars as $calendar) {
-                                            if ($i+1 == $calendar["resDayOfWeek"] && $e+1 == $calendar["resTimeSlot"]) {
-                                                $foundCalendar = true;
-                                                ?>
-                                                <td class='hover-bg ts-item' data-tsmeta="<?php echo $calendar["sptName"] ?>">
-                                                    <a href='calendarSport.php?idreservation=<?php echo $calendar["idReservation"] ?>'>
-                                                        <h6><?php echo $calendar["sptName"] ?></h6>
-                                                        <span><?php echo $calendar["resTime"] ?></span>
-                                                        <div class='trainer-name'>
-                                                            <?php echo $calendar["coaName"] ?>
-                                                        </div>
-                                                    </a>
-                                                </td>
-                                            <?php }
-                                        }
-                                        if (!$foundCalendar) { ?>
-                                            <td style='height: 106px'></td>
-                                        <?php } ?>
-                                    <?php } ?>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+";
+foreach ($coachs as $coach) {
+    foreach ($calendars as $calendar){
+        if ($calendar["idReservation"] == $idReservation && $calendar["idCoach"] == $coach["idCoach"])
+        {
+            echo "
+            <div class='col-lg-4 col-md-6'>
+                <div class='single-trainer-item'>
+                    <img src=" . $coach["coaImage"] . " alt='image'>
+                    <div class='trainer-text'>
+                        <h5>". $coach["coaName"] ."</h5>
+                        <span>". $coach["coaRank"] ."</span>
+                        <p>". $coach["coaDescription"] ."</p>
+                        <div class='trainer-social'>
+                            <a href='#'><i class='fa fa-facebook'></i></a>
+                            <a href='#'><i class='fa fa-instagram'></i></a>
+                            <a href='#'><i class='fa fa-twitter'></i></a>
+                            <a href='#'><i class='fa fa-pinterest'></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
+            
         </div>
     </div>
 </section>
+";
+        }
+    }
+}
 
-    <!-- Trainer Table Schedule Section End -->
+?>
 
     <!-- Footer Banner Section Begin -->
     <section class="footer-banner">

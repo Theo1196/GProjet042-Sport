@@ -119,7 +119,7 @@
     }
 
     public function getCalendar(){
-        $query = "SELECT t_coach.coaName, t_sport.sptName, t_réservation.resTime, t_réservation.resDate, t_réservation.resPlace, t_week.idWeek FROM t_réservation JOIN t_sport ON t_réservation.FkSport = t_sport.idSport JOIN t_coach ON t_réservation.FkCoach = t_coach.idCoach JOIN t_week ON t_réservation.FkWeek = t_week.idWeek WHERE t_week.idWeek = ( SELECT MAX(t_week.idWeek) FROM t_week );";
+        $query = "SELECT t_coach.coaName, t_sport.sptName, t_réservation.resTime, t_réservation.resTimeSlot, t_réservation.resDayOfWeek, t_réservation.resPlace, t_réservation.idReservation, t_week.idWeek, t_coach.idCoach FROM t_réservation JOIN t_sport ON t_réservation.FkSport = t_sport.idSport JOIN t_coach ON t_réservation.FkCoach = t_coach.idCoach JOIN t_week ON t_réservation.FkWeek = t_week.idWeek WHERE t_week.idWeek = ( SELECT MAX(t_week.idWeek) FROM t_week );";
         $req = $this->querySimpleExecute($query);
         $calendar = $this->formatData($req);
         return $calendar;
