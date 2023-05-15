@@ -86,7 +86,7 @@ echo "
         <div class='row'>
             <div class='col-lg-12'>
                 <div class='section-title'>
-                    <h2>EXPERT TRAINERS</h2>
+                    <h2>RESERVATION ‎ INFO</h2>
                 </div>
             </div>
         </div>
@@ -103,7 +103,9 @@ foreach ($coachs as $coach) {
                     <div class='trainer-text'>
                         <h5>". $coach["coaName"] ."</h5>
                         <span>". $coach["coaRank"] ."</span>
-                        <p>". $coach["coaDescription"] ."</p>
+                        <p>Lieu: " . $calendar["resPlace"] . "</p>
+                        <p>Sport: " . $calendar["sptName"] . "</p>
+                        <p>Heure: " . $calendar["resTime"] . "</p>
                         <div class='trainer-social'>
                             <a href='#'><i class='fa fa-facebook'></i></a>
                             <a href='#'><i class='fa fa-instagram'></i></a>
@@ -112,8 +114,7 @@ foreach ($coachs as $coach) {
                         </div>
                     </div>
                 </div>
-            </div>
-            
+            </div>  
         </div>
     </div>
 </section>

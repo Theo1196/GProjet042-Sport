@@ -77,7 +77,7 @@
 include("Database.php");
 $db = new Database();
 $calendars = $db->getCalendar();
-$lastWeek = $db->getLastWeek();
+$lastWeeks = $db->getLastWeek();
 ?>
 
 <section class='classes-timetable spad'>
@@ -86,19 +86,25 @@ $lastWeek = $db->getLastWeek();
             <div class='col-lg-12'>
                 <div class='section-title'>
                     <h2>Emploie du temps</h2>
+                    <?php
+        foreach($lastWeeks as $lastWeek){
+            echo "debut de semaine: ".$lastWeek["weeBegin"] . " | fin de semaine: ". $lastWeek["weeEnd"];
+        }
+        ?>
                 </div>
                 <div class='nav-controls'>
                     <ul>
                         <li class='active' data-tsfilter='all'>Toutes les classes</li>
                         <li data-tsfilter='gym'>Gym</li>
-                        <li data-tsfilter='crossfit'>Crossfit</li>
-                        <li data-tsfilter='Cardio'>Cardio</li>
+                        <li data-tsfilter='Football'>Football</li>
+                        <li data-tsfilter='Dance'>Dance</li>
                         <li data-tsfilter='body'>Body</li>
                         <li data-tsfilter='yoga'>Yoga</li>
                     </ul>
                 </div>
             </div>
         </div>
+        
         <div class='row'>
             <div class='col-lg-12'>
                 <div class='schedule-table'>
@@ -119,39 +125,47 @@ $lastWeek = $db->getLastWeek();
                             <?php for ($e = 0; $e < 7; $e++) { 
                                 echo "
                                 <tr>
-                                    <td class='workout-time'> " . 10 + ($e * 2) . " :00h</td>
+                                    <td class='workout-time'> " . 10 + ($e * 2) . ":00h</td>
                                 ";
                                     for ($i = 0; $i < 7; $i++) {
                                         $foundCalendar = false;
                                     
                                         foreach ($calendars as $calendar) {
-                                            if ($i+1 == $calendar["resDayOfWeek"] && $e+1 == $calendar["resTimeSlot"]) {
+                                            if ($i+1 == $calendar["resDayOfWeek"] && $e+1 == $calendar["resTimeSlot"]) 
+                                            {
                                                 $foundCalendar = true;
-                                                ?>
-                                                <td class='hover-bg ts-item' data-tsmeta="<?php echo $calendar["sptName"] ?>">
-                                                    <a href='calendarSport.php?idreservation=<?php echo $calendar["idReservation"] ?>'>
-                                                        <h6><?php echo $calendar["sptName"] ?></h6>
-                                                        <span><?php echo $calendar["resTime"] ?></span>
+                                                echo "
+                                                <td class='hover-bg ts-item' data-tsmeta=". $calendar["sptName"] . ">
+                                                    <a href='calendarSport.php?idreservation=". $calendar["idReservation"] . "'>
+                                                        <h6>" . $calendar["sptName"] . "</h6>
+                                                        <span>" . $calendar["resTime"] . "</span>
                                                         <div class='trainer-name'>
-                                                            <?php echo $calendar["coaName"] ?>
+                                                            " . $calendar["coaName"] . "
                                                         </div>
                                                     </a>
                                                 </td>
-                                            <?php }
+                                                "; 
+                                            }
                                         }
-                                        if (!$foundCalendar) { ?>
+                                        if (!$foundCalendar) { 
+                                            echo "
                                             <td style='height: 106px'></td>
-                                        <?php } ?>
-                                    <?php } ?>
+                                            ";
+                                         } 
+                                    }
+                                echo " 
                                 </tr>
-                            <?php } ?>
+                                ";
+                            }
+                        echo "
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</section>";
+?>
 
     <!-- Trainer Table Schedule Section End -->
 
