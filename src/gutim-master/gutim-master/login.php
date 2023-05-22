@@ -7,7 +7,7 @@
     <meta name="keywords" content="Gutim, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gutim | Template</title>
+    <title>Gutim | inscrire</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap"
@@ -23,6 +23,18 @@
 </head>
 
 <?php include("includes/header.html");?> 
+
+<section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb/classes-breadcrumb.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <h2>S'inscrire</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="register-section spad">
 <div class="container">
@@ -58,9 +70,9 @@
             </div>
         </div>
         <div class="col-lg-4">
-                    <div class="register-pic">
-                        <img src="img/register-pic.jpg" alt="">
-                    </div>
+            <div class="register-pic">
+                <img src="img/register-pic.jpg" alt="">
+            </div>
         </div>
     </div>
 </div>

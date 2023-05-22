@@ -63,6 +63,18 @@
 
 <?php include("includes/header.html");?> 
 
+<section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb/classes-breadcrumb.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <h2>S'inscrire</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="register-section spad">
 <div class="container">
     <div class="row">
