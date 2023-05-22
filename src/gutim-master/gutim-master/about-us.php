@@ -30,36 +30,9 @@
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
+  
+<?php include("includes/header.html");?> 
 
-    <!-- Header Section Begin -->
-    <header class="header-section">
-        <div class="container">
-            <div class="logo">
-                <a href="./index.html">
-                    <img src="img/logo.png" alt="">
-                </a>
-            </div>
-            <div class="nav-menu">
-                <nav class="mainmenu mobile-menu">
-                    <ul>
-                        <li><a href="./index.php">Accueil</a></li>
-                        <li class="active"><a href="./about-us.php">A propos</a></li>
-                        <li><a href="./classes.php">Classes</a></li>
-                        <li><a href="./blog.php">Blog</a></li>
-                        <li><a href="./gallery.php">Gallerie</a></li>
-                        <li><a href="./contact.php">Contactez-nous</a></li>
-                    </ul>
-                </nav>
-                <a href="#" class="primary-btn signup-btn">Connexion</a>
-            </div>
-            <div id="mobile-menu-wrap"></div>
-        </div>
-    </header>
-    <!-- Header End -->
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb/classes-breadcrumb.jpg">

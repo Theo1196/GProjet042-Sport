@@ -31,6 +31,7 @@
         foreach ($binds as $key => $element) {
             $req->bindValue($key, $element["value"], $element["type"]);
         }
+        var_dump($req);
         $req->execute();
         return $req;        
     }
@@ -72,19 +73,19 @@
 
     }
     //
-    public function addOneCoach($coaName, $coaMail, $coaRank, $coaDescription, $coaImage, $fkSport){
-        $sql = "INSERT INTO t_coach (DEFAULT, `coaName`, `coaMail`, `coaRank`, `coaDescription`, `coaImage`, `fkSport`) VALUES (:coaName, :coaMail, :coaRank, :coaDescription, :coaImage, :fkSport)";
+    public function addOneCoach($data){
+        $sql = "INSERT INTO t_coach (`coaName`, `coaMail`, `coaRank`, `coaDescription`, `coaImage`, `fkSport`) VALUES (:coaName, :coaMail, :coaRank, :coaDescription, :coaImage, :fkSport)";
         $binds = [];
-        $binds["coaName"]        = ["value" => $coaName , "type" => PDO::PARAM_STR];
-        $binds["coaMail"]        = ["value" => $coaMail , "type" => PDO::PARAM_STR];
-        $binds["coaRank"]        = ["value" => $coaRank , "type" => PDO::PARAM_STR];
-        $binds["coaDescription"] = ["value" => $coaDescription , "type" => PDO::PARAM_STR];
-        $binds["coaImage"]       = ["value" => $coaImage , "type" => PDO::PARAM_STR];
-        $binds["fkSport"]        = ["value" => $fkSport , "type" => PDO::PARAM_STR];
+        $binds["coaName"]        = ["value" => $data["coaName"] , "type" => PDO::PARAM_STR];
+        $binds["coaMail"]        = ["value" => $data["coaMail"] , "type" => PDO::PARAM_STR];
+        $binds["coaRank"]        = ["value" => $data["coaRank"] , "type" => PDO::PARAM_STR];
+        $binds["coaDescription"] = ["value" => $data["coaDescription"] , "type" => PDO::PARAM_STR];
+        $binds["coaImage"]       = ["value" => $data["coaImage"] , "type" => PDO::PARAM_STR];
+        $binds["fkSport"]        = ["value" => $data["fkSport"] , "type" => PDO::PARAM_INT];
         $this->queryPrepareExecute($sql, $binds);
     }
     //
-    public function updateRecette($idCoach, $coaName, $coaMail, $coaRank, $coaDescription, $coaImage, $fkSport){
+    public function updateCoach($idCoach, $coaName, $coaMail, $coaRank, $coaDescription, $coaImage, $fkSport){
         $sql = "UPDATE t_coach SET coaName = :coaName, coaMail= :coaMail, coaRank = :coaRank, coaDescription = :coaDescription, coaImage= :coaImage, fkSport = :fkSport  WHERE idCoach = :idCoach";
         $binds = [];
         $binds["coaName"]        = ["value" => $coaName , "type" => PDO::PARAM_STR];
@@ -118,23 +119,6 @@
 
     }
 
-    public function getCalendar(){
-        $query = "SELECT t_coach.coaName, t_sport.sptName, t_réservation.resTime, t_réservation.resTimeSlot, t_réservation.resDayOfWeek, t_réservation.resPlace, t_réservation.idReservation, t_week.idWeek, t_coach.idCoach FROM t_réservation JOIN t_sport ON t_réservation.FkSport = t_sport.idSport JOIN t_coach ON t_réservation.FkCoach = t_coach.idCoach JOIN t_week ON t_réservation.FkWeek = t_week.idWeek WHERE t_week.idWeek = ( SELECT MAX(t_week.idWeek) FROM t_week );";
-        $req = $this->querySimpleExecute($query);
-        $calendar = $this->formatData($req);
-        return $calendar;
-
-    }
-
-    public function getLastWeek(){
-        $query = "SELECT * FROM `t_week` WHERE t_week.idWeek = ( SELECT MAX(t_week.idWeek) FROM t_week );";
-        $req = $this->querySimpleExecute($query);
-        $lastWeek = $this->formatData($req);
-        return $lastWeek;
-
-    }
-
-
     //Fonction pour avoir le nb de coach dans la DB
     public function countCoach()
     {
@@ -142,34 +126,6 @@
         $req = $this->querySimpleExecute($query);
         $idCoach = $this->formatData($req);
         return $idCoach;
-    }
-
-    //Fonction pour avoir le nb de sport dans la DB
-    public function countSport()
-    {
-        $query = "SELECT COUNT(*) FROM t_sport";
-        $req = $this->querySimpleExecute($query);
-        $idSport = $this->formatData($req);
-        return $idSport;
-    }
-
-    //Fonction pour avoir le nb de sport dans la DB
-    public function CountPlace()
-    {
-        $query = "SELECT COUNT(*) FROM t_réservation";
-        $req = $this->querySimpleExecute($query);
-        $idPlace = $this->formatData($req);
-        return $idPlace;
-    }
-
-
-    public function getAllSport()
-    {
-        $query = "SELECT * FROM t_sport"; 
-        $req = $this->querySimpleExecute($query);
-        $sport = $this->formatData($req);
-
-        return $sport;
     }
 
     //
@@ -182,13 +138,15 @@
 
     }
     //
-    public function addOneSportif($spoName, $spoMail, $fkSport){
-        $sql = "INSERT INTO t_sportif (DEFAULT, `spoName`, `coaMail`, `fkSport`) VALUES (:spoName, :coaMail, :fkSport)";
+    public function addOneSportif($data){
+        $query = "INSERT INTO t_sportif (`spoName`, `spoMail`, `fkSport`) VALUES (:spoName, :spoMail, :fkSport);";
         $binds = [];
-        $binds["spoName"] = ["value" => $spoName , "type" => PDO::PARAM_STR];
-        $binds["coaMail"] = ["value" => $coaMail , "type" => PDO::PARAM_STR];
-        $binds["fkSport"] = ["value" => $fkSport , "type" => PDO::PARAM_STR];
-        $this->queryPrepareExecute($sql, $binds);
+        $binds["spoName"] = ["value" => $data['spoName'] , "type" => PDO::PARAM_STR];
+        $binds["spoMail"] = ["value" => $data['spoMail'] , "type" => PDO::PARAM_STR];
+        $binds["fkSport"] = ["value"=> $data['fkSport'] , "type" => PDO::PARAM_INT];
+        var_dump($binds);
+        $req = $this->queryPrepareExecute($query, $binds);
+        $sportif = $this -> formatData($req);
     }
     //
     public function updateSportif($idSportif, $spoName, $spoMail, $fkSport){
