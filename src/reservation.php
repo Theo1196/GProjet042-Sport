@@ -80,7 +80,8 @@ $calendars = $db->getCalendar();
 $lastWeeks = $db->getLastWeek();
 $sports = $db->getAllSport();
 
-echo "<select>";
+echo "<form action='checkReservation.php' method='get'>";
+echo "<select name='sports'>";
 echo "<option value=''>Sélectionner un sport</option>"; 
 foreach($sports as $sport)
 {
@@ -88,7 +89,7 @@ foreach($sports as $sport)
 }
 echo "</select>";
 ?>
-<select>
+<select name="time">
     <option value=''>Sélectionner un horaire</option>
     <option value="1">10:00H à 12:00H</option>
     <option value="2">12:00H à 14:00H</option>
@@ -98,6 +99,9 @@ echo "</select>";
     <option value="6">20:00H à 22:00H</option>
     <option value="7">22:00H à 24:00H</option>
 </select>
+
+<button type="submit">reserver</button>
+</form>
 
 
 
