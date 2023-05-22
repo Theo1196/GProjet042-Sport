@@ -352,6 +352,7 @@ ul, ol {
 }
 .about-text img {
 	margin-bottom: 25px;
+	width: 280px;
 }
 .about-text .at-author h4 {
 	font-size: 22px;
@@ -497,6 +498,7 @@ ul, ol {
 }
 .single-trainer-item {
 	position: relative;
+	padding-top: 110px;
 }
 .single-trainer-item:hover .trainer-text {
 	height: 250px;
@@ -573,6 +575,11 @@ ul, ol {
 }
 .single-trainer-item .trainer-text .trainer-social a:last-child {
 	margin-right: 0;
+}
+.row{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
 }
 /*---------------------
   Testimonial Section

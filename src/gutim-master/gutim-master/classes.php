@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
-<body>
 <?php include("includes/header.html");?> 
 
     <!-- Breadcrumb Section Begin -->
@@ -472,5 +471,3 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
 </body>
-
-</html>

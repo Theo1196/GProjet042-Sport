@@ -22,8 +22,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
-<body>
-    <?php include("includes/header.html");?> 
+<?php include("includes/header.html");?> 
 
     <!-- Hero Section Begin -->
     <section class="hero-section set-bg" data-setbg="img/hero-bg.jpg">
