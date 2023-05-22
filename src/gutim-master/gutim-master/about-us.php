@@ -5,6 +5,8 @@
         include("../../database.php");
         $db = new Database();
         $idCoach = $db->countCoach();
+        $idSport = $db->countSport();
+        $idPlace = $db->CountPlace();
 ?>
 <head>
     <meta charset="UTF-8">
@@ -28,7 +30,9 @@
 </head>
 
 <body>
-    <?php include("includes/header.html");?> 
+  
+<?php include("includes/header.html");?> 
+
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb/classes-breadcrumb.jpg">
@@ -86,11 +90,15 @@
                 <div class="col-lg-12">
                     <div class="about-counter-text">
                         <div class="single-counter">
-                            <h1 class="counter-num count">98</h1>
+                            <?php 
+                                echo "<h1 class= counter-num count>". $idSport[0]['COUNT(*)'] ."</h1>";
+                            ?>
                             <p>Programs</p>
                         </div>
                         <div class="single-counter">
-                            <h1 class="counter-num count">14</h1>
+                            <?php 
+                                echo "<h1 class= counter-num count>". $idPlace[0]['COUNT(*)'] ."</h1>";
+                            ?>
                             <p>Locations</p>
                         </div>
                         <div class="single-counter">
@@ -225,17 +233,17 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="footer-banner-item set-bg" data-setbg="img/footer-banner/footer-banner-1.jpg">
-                        <span>New member</span>
-                        <h2>7 days for free</h2>
-                        <p>Complete the training sessions with us, surely you will be happy</p>
-                        <a href="#" class="primary-btn">Get Started</a>
+                        <span>Nouveau membre</span>
+                        <h2>7 heures gratuites</h2>
+                        <p>Devenez un membre habituez et on vous appelera CHEF !</p>
+                        <a href="#" class="primary-btn">Commencer</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="footer-banner-item set-bg" data-setbg="img/footer-banner/footer-banner-2.jpg">
-                        <span>contact us</span>
-                        <h2>09 746 204</h2>
-                        <p>If you trust us on your journey they dark sex does not disappoint you!</p>
+                        <span>Contactez nous</span>
+                        <h2>021 318 44 00</h2>
+                        <p>Si vous avez la moindre question vous pouvez nous contactez.</p>
                         <a href="#" class="primary-btn">Get Started</a>
                     </div>
                 </div>
@@ -250,40 +258,26 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="contact-option">
-                        <span>Phone</span>
-                        <p>(123) 118 9999 - (123) 118 9999</p>
+                        <span>Téléphone</span>
+                        <p>021 318 44 00</p>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="contact-option">
-                        <span>Address</span>
-                        <p>72 Kangnam, 45 Opal Point Suite 391</p>
+                        <span>Addresse</span>
+                        <p>Rue des pompidous 14, Lausanne 1010 rpz</p>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="contact-option">
                         <span>Email</span>
-                        <p>contactcompany@Gutim.com</p>
+                        <p>JeSuisCoach.coach@gmail.com</p>
                     </div>
                 </div>
             </div>
-            <div class="subscribe-option set-bg" data-setbg="img/footer-signup.jpg">
-                <div class="so-text">
-                    <h4>Subscribe To Our Mailing List</h4>
-                    <p>Sign up to receive the latest information </p>
-                </div>
-                <form action="#" class="subscribe-form">
-                    <input type="text" placeholder="Enter Your Mail">
-                    <button type="submit"><i class="fa fa-send"></i></button>
-                </form>
-            </div>
             <div class="copyright-text">
-                <ul>
-                    <li><a href="#">Term&Use</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
                 <p>&copy;<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> Tous les droits nous sont réserver | Se site à été réaliser par Luca, Natasha et Théo</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></p>
                 <div class="footer-social">
                     <a href="#"><i class="fa fa-facebook"></i></a>
