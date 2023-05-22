@@ -99,8 +99,16 @@
     public function getAllSportif(){
         $query = "SELECT * FROM t_sportif";
         $req = $this->querySimpleExecute($query);
-        $recette = $this->formatData($req);
-        return $recette;
+        $sportif = $this->formatData($req);
+        return $sportif;
+
+    }
+
+    public function getAllSport(){
+        $query = "SELECT * FROM t_sport";
+        $req = $this->querySimpleExecute($query);
+        $sport = $this->formatData($req);
+        return $sport;
 
     }
 
