@@ -28,6 +28,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -58,6 +59,9 @@
         </div>
     </header>
     <!-- Header End -->
+=======
+    <?php include("includes/header.html");?> 
+>>>>>>> parent of 732cb7e (Merge pull request #14 from Theo1196/Traduction_site)
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb/classes-breadcrumb.jpg">

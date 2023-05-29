@@ -50,19 +50,19 @@
     }
 
     //
-    public function getCoach($data) {
-        $query = "SELECT * FROM t_coach WHERE coaMail ='". $data["login"] ."'";
+    public function getUser($data) {
+        $query = "SELECT * FROM t_user WHERE useLogin ='". $data["login"] ."'";
         $req = $this->querySimpleExecute($query);
         $user = $this->formatData($req)[0];
 
-        if (password_verify($data["password"], $user["coaPassword"])) {
+        if (password_verify($data["password"], $user["usePassword"])) {
             return $user;
         } else {
             return false;
         }
 
     }
-    //
+
     public function deleteOneCoach($idCoach){
 
         $sql = "DELETE FROM t_coach WHERE idCoach='" . $idCoach . "'";
@@ -169,31 +169,32 @@
     }
 
     //
-    public function deleteOneSportif($idSportif){
+    public function deleteOneRecette($idRecette){
 
-        $sql = "DELETE FROM t_sportif WHERE idSportif='" . $idSportif . "'";
+        $sql = "DELETE FROM t_recette WHERE idRecette='" . $idRecette . "'";
         $req = $this->querySimpleExecute($sql);
-        $idSportif = $this->formatData($req);
-        return $idSportif;
+        $idRecette = $this->formatData($req);
+        return $idRecette;
 
     }
     //
-    public function addOneSportif($spoName, $spoMail, $fkSport){
-        $sql = "INSERT INTO t_sportif (DEFAULT, `spoName`, `coaMail`, `fkSport`) VALUES (:spoName, :coaMail, :fkSport)";
+    public function addOneRecette($recTitre, $recCategorie, $recPreparation, $recImage){
+        $sql = "INSERT INTO t_recette (`recTitre`, `recCategorie`, `recPreparation`, `recImage`) VALUES (:recTitre, :recCategorie, :recPreparation, :recImage)";
         $binds = [];
-        $binds["spoName"] = ["value" => $spoName , "type" => PDO::PARAM_STR];
-        $binds["coaMail"] = ["value" => $coaMail , "type" => PDO::PARAM_STR];
-        $binds["fkSport"] = ["value" => $fkSport , "type" => PDO::PARAM_STR];
+        $binds["recTitre"] = ["value" => $recTitre , "type" => PDO::PARAM_STR];
+        $binds["recCategorie"] = ["value" => $recCategorie , "type" => PDO::PARAM_STR];
+        $binds["recPreparation"] = ["value" => $recPreparation , "type" => PDO::PARAM_STR];
+        $binds["recImage"] = ["value" => $recImage , "type" => PDO::PARAM_STR];
         $this->queryPrepareExecute($sql, $binds);
     }
     //
-    public function updateSportif($idSportif, $spoName, $spoMail, $fkSport){
-        $sql = "UPDATE t_sportif SET spoName = :spoName, spoMail= :spoMail, fkSport = :fkSport  WHERE idSportif = :idSportif";
+    public function updateRecette($recIngredients, $idRecette){
+        $sql = "UPDATE t_recette SET recIngredients = :recIngredients WHERE idRecette = :idRecette";
         $binds = [];
-        $binds["spoName"] = ["value" => $spoName , "type" => PDO::PARAM_STR];
-        $binds["coaMail"] = ["value" => $coaMail , "type" => PDO::PARAM_STR];
-        $binds["fkSport"] = ["value" => $fkSport , "type" => PDO::PARAM_STR];
+        $binds["recIngredients"] = ["value" => $recIngredients , "type" => PDO::PARAM_STR];
+        $binds["idRecette"] = ["value" => $idRecette , "type" => PDO::PARAM_INT];
         $this->queryPrepareExecute($sql, $binds);
     }
+
  }
  ?>
