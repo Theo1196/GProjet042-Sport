@@ -127,7 +127,7 @@
     }
 
     public function getCalendar(){
-        $query = "SELECT t_coach.coaName, t_sport.sptName, t_réservation.resTime, t_réservation.resTimeSlot, t_réservation.resDayOfWeek, t_réservation.resPlace, t_réservation.idReservation, t_week.idWeek, t_coach.idCoach FROM t_réservation JOIN t_sport ON t_réservation.FkSport = t_sport.idSport JOIN t_coach ON t_réservation.FkCoach = t_coach.idCoach JOIN t_week ON t_réservation.FkWeek = t_week.idWeek WHERE t_week.idWeek = ( SELECT MAX(t_week.idWeek) FROM t_week );";
+        $query = "SELECT t_coach.coaName, t_sport.sptName, t_reservation.resTime, t_reservation.resTimeSlot, t_reservation.resDayOfWeek, t_reservation.resPlace, t_reservation.idReservation, t_week.idWeek, t_coach.idCoach FROM t_reservation JOIN t_sport ON t_reservation.FkSport = t_sport.idSport JOIN t_coach ON t_reservation.FkCoach = t_coach.idCoach JOIN t_week ON t_reservation.FkWeek = t_week.idWeek WHERE t_week.idWeek = ( SELECT MAX(t_week.idWeek) FROM t_week );";
         $req = $this->querySimpleExecute($query);
         $calendar = $this->formatData($req);
         return $calendar;
@@ -140,6 +140,22 @@
         $lastWeek = $this->formatData($req);
         return $lastWeek;
 
+    }
+
+    //requete sql qui ajoute une reservation
+    public function addOneReservation($resDate ,$resTime, $resTimeSlot, $resDayOfWeek, $resPlace, $fkSportif, $fkSport, $fkCoach, $fkWeek){
+        $sql = "INSERT INTO t_reservation (`resDate`, `resTime`, `resTimeSlot`, `resDayOfWeek`, `resPlace`, `fkSportif`, `fkSport`, `fkCoach`, `fkWeek`) VALUES (:resDate, :resTime, :resTimeSlot, :resDayOfWeek, :resPlace, :fkSportif, :fksport, :fkCoach, :fkWeek)";
+        $binds = [];
+        $binds["resDate"] = ["value" => $resDate , "type" => PDO::PARAM_STR];
+        $binds["resTime"] = ["value" => $resTime , "type" => PDO::PARAM_STR];
+        $binds["resTimeSlot"] = ["value" => $resTimeSlot , "type" => PDO::PARAM_INT];
+        $binds["resDayOfWeek"] = ["value" => $resDayOfWeek , "type" => PDO::PARAM_INT];
+        $binds["resPlace"] = ["value" => $resPlace , "type" => PDO::PARAM_STR];
+        $binds["fkSportif"] = ["value" => $fkSportif , "type" => PDO::PARAM_INT];
+        $binds["fkSport"] = ["value" => $fkSport , "type" => PDO::PARAM_INT];
+        $binds["fkCoach"] = ["value" => $fkCoach , "type" => PDO::PARAM_INT];
+        $binds["fkWeek"] = ["value" => $fkWeek , "type" => PDO::PARAM_INT];
+        $this->queryPrepareExecute($sql, $binds);
     }
 
 
