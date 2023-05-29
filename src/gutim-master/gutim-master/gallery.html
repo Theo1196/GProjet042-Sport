@@ -14,12 +14,12 @@
         rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="./gutim-master/gutim-master/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="./gutim-master/gutim-master/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="./gutim-master/gutim-master/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="./gutim-master/gutim-master/css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="./gutim-master/gutim-master/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="./gutim-master/gutim-master/css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
 <body>
@@ -41,9 +41,9 @@
                     <ul>
                         <li><a href="./index.html">Home</a></li>
                         <li><a href="./about-us.php">About</a></li>
-                        <li class="active"><a href="./classes.html">Classes</a></li>
+                        <li><a href="./classes.html">Classes</a></li>
                         <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./gallery.html">Gallery</a></li>
+                        <li class="active"><a href="./gallery.html">Gallery</a></li>
                         <li><a href="./contact.html">Contacts</a></li>
                     </ul>
                 </nav>
@@ -60,10 +60,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <h2>Classes</h2>
+                        <h2>Gallery</h2>
                         <div class="breadcrumb-option">
                             <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                            <span>Class</span>
+                            <span>Gallery</span>
                         </div>
                     </div>
                 </div>
@@ -72,83 +72,58 @@
     </section>
     <!-- Breadcrumb Section End -->
 
-
-<?php
-include("Database.php");
-$db = new Database();
-$calendars = $db->getCalendar();
-$idReservation = $_GET['idreservation'];
-$coachs = $db->getAllCoach();
-
-echo "
-<section class='trainer-section about-trainer spad'>
-    <div class='container'>
-        <div class='row'>
-            <div class='col-lg-12'>
-                <div class='section-title'>
-                    <h2>RESERVATION ‎ INFO</h2>
+    <!-- Gallery Section Begin -->
+    <div class="gallery-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="gallery-controls">
+                        <li class="active" data-filter=".all">all gallery</li>
+                        <li data-filter=".fitness">fitness</li>
+                        <li data-filter=".coaching">coaching</li>
+                        <li data-filter=".event">event</li>
+                        <li data-filter=".other">other</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class='row'>
-";
-foreach ($coachs as $coach) {
-    foreach ($calendars as $calendar){
-        if ($calendar["idReservation"] == $idReservation && $calendar["idCoach"] == $coach["idCoach"])
-        {
-            echo "
-            <div class='col-lg-4 col-md-6'>
-                <div class='single-trainer-item'>
-                    <img src=" . $coach["coaImage"] . " alt='image'>
-                    <div class='trainer-text'>
-                        <h5>". $coach["coaName"] ."</h5>
-                        <span>". $coach["coaRank"] ."</span>
-                        <p>Lieu: " . $calendar["resPlace"] . "</p>
-                        <p>Sport: " . $calendar["sptName"] . "</p>
-                        <p>Heure: " . $calendar["resTime"] . "</p>
-                        <div class='trainer-social'>
-                            <a href='#'><i class='fa fa-facebook'></i></a>
-                            <a href='#'><i class='fa fa-instagram'></i></a>
-                            <a href='#'><i class='fa fa-twitter'></i></a>
-                            <a href='#'><i class='fa fa-pinterest'></i></a>
+            <div class="row gallery-filter">
+                <div class="col-lg-6 mix all fitness">
+                    <img src="img/gallery/gallery-1.jpg" alt="">
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-6 mix all fitness coaching">
+                            <img src="img/gallery/gallery-2.jpg" alt="">
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12 mix all coaching">
+                                    <img src="img/gallery/gallery-3.jpg" alt="">
+                                </div>
+                                <div class="col-lg-12 mix all coaching">
+                                    <img src="img/gallery/gallery-4.jpg" alt="">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>  
-        </div>
-    </div>
-</section>
-";
-        }
-    }
-}
-
-?>
-
-    <!-- Footer Banner Section Begin -->
-    <section class="footer-banner">
-        <div class="container-fluid">
-            <div class="row">
                 <div class="col-lg-6">
-                    <div class="footer-banner-item set-bg" data-setbg="img/footer-banner/footer-banner-1.jpg">
-                        <span>New member</span>
-                        <h2>7 days for free</h2>
-                        <p>Complete the training sessions with us, surely you will be happy</p>
-                        <a href="#" class="primary-btn">Get Started</a>
+                    <div class="row">
+                        <div class="col-lg-6 mix all other">
+                            <img src="img/gallery/gallery-5.jpg" alt="">
+                        </div>
+                        <div class="col-lg-6 mix all other">
+                            <img src="img/gallery/gallery-6.jpg" alt="">
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="footer-banner-item set-bg" data-setbg="img/footer-banner/footer-banner-2.jpg">
-                        <span>contact us</span>
-                        <h2>09 746 204</h2>
-                        <p>If you trust us on your journey they dark sex does not disappoint you!</p>
-                        <a href="#" class="primary-btn">Get Started</a>
-                    </div>
+                <div class="col-lg-6 mix all event">
+                    <img src="img/gallery/gallery-7.jpg" alt="">
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Footer Banner Section End -->
+    </div>
+    <!-- Gallery Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
